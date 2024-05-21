@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');* src/Marquee.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');* src/Marquee.css */ 
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25+Charted&display=swap'); src/Marquee.css 
+
 .marquee-container {
     overflow: hidden;
     white-space: nowrap;
@@ -17,7 +19,9 @@
     font-size: 5em; /* Tamaño de fuente enorme */
     /* font-size: 15em;  */
     background-color: #000000;
-    font-family: 'Press Start 2P', cursive; /* Aplicar la fuente retro */
+    
+    /* font-family: 'Press Start 2P', cursive;  */
+    font-family: 'Jersey 25 Charted', sans-serif; 
     /* font-family: 'Arcade Classic';
     src: url('../fonts/ARCADECLASSIC.TTF') format('truetype'); */
   }
