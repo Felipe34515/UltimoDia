@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');* src/Marquee.css */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: fixed;
+ 
+  }
+  
+  .marquee {
+    padding-top: 10%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: red;
+    white-space: nowrap;
+    will-change: transform;
+    font-size: 5em; /* Tamaño de fuente enorme */
+    /* font-size: 15em;  */
+    background-color: #000000;
+    font-family: 'Press Start 2P', cursive; /* Aplicar la fuente retro */
+    /* font-family: 'Arcade Classic';
+    src: url('../fonts/ARCADECLASSIC.TTF') format('truetype'); */
+  }
+
+
+  
