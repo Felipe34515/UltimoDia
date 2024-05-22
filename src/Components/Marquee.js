@@ -4,9 +4,7 @@ import './Marquee.css'; // Asegúrate de crear este archivo para los estilos
 function Marquee() {
   const marqueeRef = useRef(null);
   const [marqueeText, setMarqueeText] = useState('');
-  const [frases, setFrases] = useState([]);
-  const [currentFraseIndex, setCurrentFraseIndex] = useState(0);
-  const velocidad = 5; // Aumenta este valor para incrementar la velocidad
+  const velocidad = 2; // Aumenta este valor para incrementar la velocidad
 
   useEffect(() => {
     const marqueeElement = marqueeRef.current;
@@ -17,35 +15,30 @@ function Marquee() {
       startPosition -= velocidad;
       if (startPosition < -marqueeElement.offsetWidth) {
         startPosition = window.innerWidth;
-        // Cambiar el mensaje al siguiente
-        setCurrentFraseIndex((prevIndex) => (prevIndex + 1) % frases.length);
+        // Cargar una nueva frase al terminar
+        fetchFrase();
       }
       marqueeElement.style.left = startPosition + 'px';
       requestId = requestAnimationFrame(animate);
     };
 
+    const fetchFrase = () => {
+      // Cargar la frase desde el endpoint proporcionado
+      fetch('https://pyn25b8xo6.execute-api.us-east-1.amazonaws.com/dev/texts')
+        .then(response => response.json())
+        .then(data => {
+          setMarqueeText(data.body); // Establecer el texto del marquee con la respuesta del endpoint
+        })
+        .catch(error => {
+          console.error('Error al cargar la frase:', error);
+        });
+    };
+
+    fetchFrase(); // Cargar la primera frase
     animate();
 
-    // Cargar el archivo JSON desde la carpeta `public`
-    fetch('/phrases.json')
-      .then(response => response.json())
-      .then(data => {
-        setFrases(data.frases);
-        // Seleccionar la primera frase
-        setCurrentFraseIndex(0);
-      })
-      .catch(error => {
-        console.error('Error al cargar el archivo JSON:', error);
-      });
-
     return () => cancelAnimationFrame(requestId);
-  }, [frases.length]);
-
-  useEffect(() => {
-    if (frases.length > 0) {
-      setMarqueeText(frases[currentFraseIndex]);
-    }
-  }, [currentFraseIndex, frases]);
+  }, []);
 
   return (
     <div className="marquee-container">
