@@ -4,7 +4,7 @@ import './Marquee.css'; // Asegúrate de crear este archivo para los estilos
 function Marquee() {
   const marqueeRef = useRef(null);
   const [marqueeText, setMarqueeText] = useState('');
-  const velocidad = 2; // Aumenta este valor para incrementar la velocidad
+  const velocidad = 7; // Aumenta este valor para incrementar la velocidad
 
   useEffect(() => {
     const marqueeElement = marqueeRef.current;

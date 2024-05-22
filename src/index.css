@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #120000;
+  background-color: #360202;
   overflow: hidden; /* Para asegurarse de que no haya desbordamiento */
 }
 
